@@ -1,0 +1,12 @@
+
+GET http://localhost:7000
+###
+
+GET http://localhost:5000
+###
+
+GET https://localhost:5001
+###
+
+GET http://hello-world.example:5000
+###

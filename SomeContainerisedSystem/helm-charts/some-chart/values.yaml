@@ -1,0 +1,11 @@
+deployment:
+  name: example-deployment
+
+# Add any amount of labels here that you want to be added to pods 
+# and also used by the deployment to select pods
+podLabels:
+  someKey: someValue
+
+# This can override values in the sub-chart (dependency)
+SpecialPod:
+  enabled: true

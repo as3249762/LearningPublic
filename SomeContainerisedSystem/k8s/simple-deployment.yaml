@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-deployment
+  labels:
+    app: simple-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: simple-pod
+  template:
+    metadata:
+      labels:
+        app: simple-pod
+    spec:
+      containers:
+      - name: simple-pod
+        image: hello-world-alex-example-9999
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+        readinessProbe:
+          httpGet:
+            path: /readiness
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /readiness
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10

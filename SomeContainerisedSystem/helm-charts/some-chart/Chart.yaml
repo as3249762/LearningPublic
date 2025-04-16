@@ -1,0 +1,17 @@
+apiVersion: v2
+name: some-chart
+description: An example helm chart for creating a service with a deployment
+
+# The chart version. Should be updated every time the chart is modified.
+version: 0.1.0
+
+# The version of the application that is being deployed. 
+# For example a Postgres chart might have an appVersion of 17.4, 
+# indicating that the version of Postgres included in the chart is 17.4.
+appVersion: '1.0.0'
+
+dependencies:
+  - name: SpecialPod
+    version: ^1.0.0
+    condition: SpecialPod.enabled
+    repository: www.someRepository/specialPod # this would need to be a real repository location to work
