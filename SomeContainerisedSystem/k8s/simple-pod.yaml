@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-world-example
+spec:
+  containers:
+    - name: hello-world-example
+      image: docker.io/library/hello-world-alex-example-9999
+      imagePullPolicy: Never
+      ports:
+      - containerPort: 5000
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+      readinessProbe:
+        httpGet:
+          path: /readiness
+          port: 5000
+        initialDelaySeconds: 3
+        periodSeconds: 3

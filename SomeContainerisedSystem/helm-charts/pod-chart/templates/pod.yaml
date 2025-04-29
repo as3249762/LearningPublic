@@ -1,0 +1,18 @@
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: {{ .Values.SpecialPodName }}
+  spec:
+    containers: # a list of containers belonging to the pod
+    - name: hello-world-example
+      image: docker.io/library/hello-world-alex-example-1524
+      imagePullPolicy: Never # only look locally in minikube
+      ports:
+      - containerPort: 6000
+      resources:
+        limits: # maximum amount of a resource that will be assigned to the container
+          memory: "128Mi"
+          cpu: "500m"
+        requests: # the guaranteed minimum amount of a resource that will be assigned to the container
+          memory: "64Mi"
+          cpu: "250m"

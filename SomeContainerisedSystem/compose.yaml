@@ -1,0 +1,20 @@
+services:
+  url-hitter:
+    image: url-hitter-alex-example-1524
+    pull_policy: build
+    build: 
+      dockerfile: ./Dockerfile
+      target: runtime
+      context: ./UrlHitter
+    ports: 
+      - "6000:6000"
+    # volumes:
+    #   - C:\Users\ALEX631\source\repos\Learning\SomeContainerisedSystem\ExampleMountFolder:/some-volume-location:rw
+  hello-world:
+    image: hello-world-alex-example-9999
+    pull_policy: build
+    build: 
+      dockerfile: ./Dockerfile
+      context: ./HelloWorldApp
+    ports: 
+      - "5000:5000"
